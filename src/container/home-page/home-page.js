@@ -132,11 +132,11 @@ const HomePage = () => {
         var total = taxes_and_fees.hotel_fees + taxes_and_fees.tax + price;
         var percentageTax = <strong className="text-danger">{taxes_and_fees.tax.caculatePercentageTaxAndFee(total)}%</strong>;
         var percentageHotelFee = <strong className="text-danger">{taxes_and_fees.hotel_fees.caculatePercentageTaxAndFee(total)}%</strong>;
-        return (<div className="tooltip">{formatedPrice} {currentCurrency} <strong className="text-danger">*</strong>
+        return (<div className="tooltip" > { formatedPrice} { currentCurrency} <strong className="text-danger">*</strong>
             <span className="tooltiptext">
                 Price includes {percentageTax} taxes and {percentageHotelFee} service fees.
             </span>
-        </div>)
+        </div >)
     }
 
     const renderHotelList = () => {
@@ -184,11 +184,11 @@ const HomePage = () => {
                     <div className="row">
                         <div className="col-lg-8 col-md-7 col-sm-5" >
                             <InputGroup className="input-group-custom">
-                                <Input onChange={(e) => onSearch(e.target.value)} placeholder="Enter hotel name or address" />
+                                <Input data-testid='input-data-field' onChange={(e) => onSearch(e.target.value)} placeholder="Enter hotel name or address" />
                             </InputGroup>
                         </div>
                         <div className="col-lg-1 col-md-2 col-sm-3 text-right">
-                            <select onChange={(e) => onSelectStar(e.target.value)} className="custom-select select-input input-group-custom">
+                            <select data-testid='select-star' onChange={(e) => onSelectStar(e.target.value)} className="custom-select select-input input-group-custom">
                                 <option selected value="0">Select Star</option>
                                 {STARS.map((x, i) => {
                                     let index = i + 1;
@@ -197,7 +197,7 @@ const HomePage = () => {
                             </select>
                         </div>
                         <div className="col-lg-1 col-md-2 col-sm-2 text-right">
-                            <select onChange={(e) => onSelectCurrency(e.target.value)} className="custom-select select-input input-group-custom">
+                            <select data-testid='select-currency' onChange={(e) => onSelectCurrency(e.target.value)} className="custom-select select-input input-group-custom">
                                 {CURRENCIES.map(x => {
                                     if (x == sessionStorage.getItem("currency")) {
                                         return <option selected value={x}>{x}</option>
