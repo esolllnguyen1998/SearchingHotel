@@ -10,6 +10,10 @@ describe("Test render homepage", () => {
         component = render(<HomePage />);
     })
 
+    it("Homepage should render no crash", () => {
+        expect(component).toBeTruthy();
+    })
+
     it("Homepage should render search-box", () => {
         var input = component.getByTestId('input-data-field');
         expect(input.getAttribute("placeholder")).toEqual("Enter hotel name or address");
