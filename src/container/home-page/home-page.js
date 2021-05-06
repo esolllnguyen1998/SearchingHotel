@@ -32,7 +32,9 @@ const HomePage = () => {
     }, [])
 
     useEffect(() => {
-        dispatch(requestApiGetAllHotels());
+        if (isNullOrUndefined(hotelDetailed) || hotelDetailed.length === 0) {
+            dispatch(requestApiGetAllHotelPrice());
+        }
     }, [hotelDetailed])
 
     useEffect(() => {
